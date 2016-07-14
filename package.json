@@ -1,5 +1,5 @@
 {
-  "name": "AccountManagement",
+  "name": "AccountManager",
   "version": "1.0.0",
   "description": "Account's money flow monitor ",
   "main": "server.js",
