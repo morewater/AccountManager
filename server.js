@@ -73,7 +73,10 @@ if (!process.env.PRODUCTION) {
     historyApiFallback: true
   }).listen(9090, 'localhost', function (err, result) {
     if (err) {
+      console.log('ERROR ======================');
+      console.log(result);
       console.log(err);
+      console.log('ERROR END======================');
     }
   });
 }
