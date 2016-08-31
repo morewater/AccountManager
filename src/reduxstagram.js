@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { render } from 'react-dom';
-
 // Import css
-import css from './styles/style.styl';
-
+//import css from './styles/style.styl';
+import css from "../resource/styles/app.less";
 // Import Components
 import App from './components/App';
 import Single from './components/Single';
