@@ -2,6 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var bootstrapPath = __dirname + '/node_modules/bootstrap/dist/css';
+var bootstrapSocialPath = __dirname + '/node_modules/bootstrap-social';
+var fontAwesomePath = __dirname + '/node_modules/font-awesome/css';
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -28,10 +31,11 @@ module.exports = {
       }
     })
   ],
+  // Automatically transform files with these extensions
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css']
+    extensions: ['', '.js', '.jsx', '.css'],
+    modulesDirectories: ['node_modules', bootstrapPath, bootstrapSocialPath, fontAwesomePath]
   },
-
 
   module: {
     loaders: [
@@ -56,12 +60,13 @@ module.exports = {
 
     { test: /\.less$/, loader: 'style!css!less' },
 { test: /\.scss$/, loader: 'style!css!sass' },
-{ test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+{ test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=1000000' },
 { test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/, loaders: ["file-loader"] }
     ]
   },
-  postcss: [
-    require('autoprefixer'),
-    require('postcss-nested')
-  ]
+  // Additional plugins for CSS post processing using postcss-loader
+postcss: [
+  require('autoprefixer'), // Automatically include vendor prefixes
+  require('postcss-nested') // Enable nested rules, like in Sass
+]
 };
